@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { GitBranch } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import bgVideo from "@/assets/pipeline-bg-scrub.mp4";
@@ -106,11 +107,10 @@ export default function ScrollVideoSite() {
       <video
         ref={videoRef}
         className="fixed inset-0 h-full w-full object-cover"
-        style={{ filter: "blur(12px)", transform: "scale(1.08)" }}
+        style={{ filter: "blur(8px)", transform: "scale(1.06)", zIndex: 0 }}
         muted
         playsInline
         preload="auto"
-        style={{ zIndex: 0 }}
       >
         <source src={bgVideo} type="video/mp4" />
       </video>
@@ -124,10 +124,7 @@ export default function ScrollVideoSite() {
             "linear-gradient(180deg, oklch(0.14 0.015 60 / 0.55) 0%, oklch(0.14 0.015 60 / 0.75) 100%)",
         }}
       />
-      <div
-        className="fixed inset-0 pointer-events-none grid-lines"
-        style={{ zIndex: 1 }}
-      />
+      <div className="fixed inset-0 pointer-events-none grid-lines" style={{ zIndex: 1 }} />
 
       {/* Content */}
       <div className="relative" style={{ zIndex: 2 }}>
@@ -135,37 +132,51 @@ export default function ScrollVideoSite() {
         <header className="fixed top-0 inset-x-0 z-30 px-8 py-5 flex items-center justify-between font-mono text-xs uppercase tracking-[0.2em]">
           <div className="flex items-center gap-2 text-primary">
             <span className="inline-block h-2 w-2 rounded-full bg-primary animate-pulse" />
-            CrudeFlow
           </div>
           <div className="hidden md:flex items-center gap-6 text-muted-foreground">
-            <a href="#overview" className="hover:text-foreground transition-colors">Overview</a>
-            <a href="#medallion" className="hover:text-foreground transition-colors">Pipeline</a>
-            <a href="#marts" className="hover:text-foreground transition-colors">Marts</a>
-            <a href="#sprints" className="hover:text-foreground transition-colors">Sprints</a>
+            <a href="#overview" className="hover:text-foreground transition-colors">
+              Overview
+            </a>
+            <a href="#medallion" className="hover:text-foreground transition-colors">
+              Pipeline
+            </a>
+            <a href="#marts" className="hover:text-foreground transition-colors">
+              Marts
+            </a>
+            <a href="#sprints" className="hover:text-foreground transition-colors">
+              Sprints
+            </a>
           </div>
-          <div className="text-muted-foreground hidden sm:block">Edmonton → Burnaby</div>
         </header>
 
         {/* HERO */}
-        <section className="min-h-screen flex flex-col justify-between px-8 pt-32 pb-16">
-          <div className="max-w-5xl">
+        <section className="relative min-h-screen flex flex-col justify-center px-8 py-16">
+          <div className="mx-auto max-w-4xl text-center">
             <p className="font-mono text-xs uppercase tracking-[0.3em] text-primary mb-6">
-              Regulatory-grade pipeline data platform
+              Pipeline data platform
             </p>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-balance leading-[0.95]">
+            <h1 className="mx-auto max-w-3xl text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-balance leading-[0.95]">
               Crude<span className="text-primary">Flow</span>.
               <br />
-              <span className="text-muted-foreground">Bronze. Silver. Gold.</span>
             </h1>
-            <p className="mt-8 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed">
-              A medallion lakehouse simulating the Trans Mountain corridor —
-              telemetry, tariffs, and incidents flowing from raw batches to
-              three reporting personas: operations, financial, and regulatory.
+            <p className="mx-auto mt-8 max-w-2xl text-lg md:text-xl text-muted-foreground leading-relaxed text-balance">
+              A medallion lakehouse simulating the Trans Mountain corridor — telemetry, tariffs, and
+              incidents flowing from raw batches to three reporting personas: operations, financial,
+              and regulatory.
             </p>
+            <a
+              href="https://github.com/Not-Nimna/CrudeFlow"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-8 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/15 px-5 py-3 font-mono text-xs uppercase tracking-[0.24em] text-primary shadow-lg shadow-black/20 transition-all hover:border-primary/70 hover:bg-primary/20 hover:-translate-y-0.5"
+            >
+              <GitBranch size={16} />
+              GitHub repository
+            </a>
           </div>
-          <div className="flex items-end justify-between font-mono text-xs uppercase tracking-widest text-muted-foreground">
+          <div className="absolute bottom-16 left-8 right-8 flex items-end justify-between font-mono text-xs uppercase tracking-widest text-muted-foreground">
             <div>Scroll to trace the pipeline ↓</div>
-            <div className="hidden md:block">v1.0 · 4 sprints · $0 stack</div>
+            <div className="hidden md:block">v1.0 </div>
           </div>
         </section>
 
@@ -182,19 +193,16 @@ export default function ScrollVideoSite() {
             </div>
             <div className="md:col-span-8 space-y-6 text-lg text-muted-foreground leading-relaxed">
               <p>
-                Every task exists to prove a sentence from the Trans Mountain
-                Data Engineer posting. Build & maintain pipelines. Monitor jobs
-                and escalate failures. Validate data quality. Clean data for
-                operational, financial, <em className="text-foreground not-italic">and regulatory</em> reporting.
+                Every task exists to prove a sentence from the Trans Mountain Data Engineer posting.
+                Build & maintain pipelines. Monitor jobs and escalate failures. Validate data
+                quality. Clean data for operational, financial,{" "}
+                <em className="text-foreground not-italic">and regulatory</em> reporting.
               </p>
               <p>
                 Corridor:{" "}
-                <span className="font-mono text-foreground">
-                  Edmonton → Kamloops → Burnaby.
-                </span>{" "}
-                Sources: telemetry, segments, batches, incidents. Layers:
-                bronze immutable raw, silver typed and gated, gold three marts
-                per persona.
+                <span className="font-mono text-foreground">Edmonton → Kamloops → Burnaby.</span>{" "}
+                Sources: telemetry, segments, batches, incidents. Layers: bronze immutable raw,
+                silver typed and gated, gold three marts per persona.
               </p>
               <div className="grid grid-cols-3 gap-4 pt-4 border-t border-border">
                 {[
@@ -204,7 +212,9 @@ export default function ScrollVideoSite() {
                 ].map(([v, l]) => (
                   <div key={l}>
                     <div className="text-3xl md:text-4xl font-bold text-primary font-mono">{v}</div>
-                    <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{l}</div>
+                    <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">
+                      {l}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -236,13 +246,23 @@ export default function ScrollVideoSite() {
                   layer: "Silver",
                   color: "var(--silver)",
                   desc: "Typed, deduped on natural keys, joined to reference tables. The quality gate quarantines bad rows.",
-                  items: ["not-null keys", "0 ≤ pressure ≤ max", "valve_status enum", "referential integrity"],
+                  items: [
+                    "not-null keys",
+                    "0 ≤ pressure ≤ max",
+                    "valve_status enum",
+                    "referential integrity",
+                  ],
                 },
                 {
                   layer: "Gold",
                   color: "var(--gold)",
                   desc: "Three marts. One per persona. Shaped for the dashboard that consumes it — no downstream cleanup required.",
-                  items: ["mart_operations", "mart_financial", "mart_regulatory", "+ data-quality tile"],
+                  items: [
+                    "mart_operations",
+                    "mart_financial",
+                    "mart_regulatory",
+                    "+ data-quality tile",
+                  ],
                 },
               ].map((l) => (
                 <div
@@ -279,11 +299,12 @@ export default function ScrollVideoSite() {
                 Quality gate
               </p>
               <p className="text-muted-foreground">
-                Injected bad data — nulls, out-of-range pressure, orphan batch_ids —
-                is caught by dbt tests + Great Expectations at silver.{" "}
+                Injected bad data — nulls, out-of-range pressure, orphan batch_ids — is caught by
+                dbt tests + Great Expectations at silver.{" "}
                 <span className="text-foreground">
-                  Failing rows route to <code className="font-mono text-primary">silver_quarantine</code>.
-                  Critical failures block promotion to gold and fail the run loudly.
+                  Failing rows route to{" "}
+                  <code className="font-mono text-primary">silver_quarantine</code>. Critical
+                  failures block promotion to gold and fail the run loudly.
                 </span>
               </p>
             </div>
@@ -319,9 +340,7 @@ export default function ScrollVideoSite() {
                     </div>
                     <h3 className="text-2xl md:text-3xl font-bold">{m.title}</h3>
                   </div>
-                  <p className="md:col-span-7 text-muted-foreground leading-relaxed">
-                    {m.desc}
-                  </p>
+                  <p className="md:col-span-7 text-muted-foreground leading-relaxed">{m.desc}</p>
                 </div>
               ))}
             </div>
@@ -346,9 +365,7 @@ export default function ScrollVideoSite() {
                   className="p-8 rounded-lg border border-border bg-card/60 backdrop-blur-md relative overflow-hidden"
                 >
                   <div className="flex items-baseline justify-between mb-4">
-                    <span className="font-mono text-5xl font-bold text-primary/30">
-                      {s.n}
-                    </span>
+                    <span className="font-mono text-5xl font-bold text-primary/30">{s.n}</span>
                     <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                       {s.effort}
                     </span>
@@ -389,10 +406,10 @@ export default function ScrollVideoSite() {
               ))}
             </div>
             <p className="mt-12 max-w-2xl text-muted-foreground leading-relaxed">
-              <span className="text-foreground">Key design choice:</span> the dbt project
-              runs on Databricks <em className="not-italic text-foreground">or</em> DuckDB
-              by swapping the profile. Free Edition quota is no longer a single point
-              of failure — and warehouse-agnostic transforms is a strong interview line.
+              <span className="text-foreground">Key design choice:</span> the dbt project runs on
+              Databricks <em className="not-italic text-foreground">or</em> DuckDB by swapping the
+              profile. Free Edition quota is no longer a single point of failure — and
+              warehouse-agnostic transforms is a strong interview line.
             </p>
           </div>
         </section>
@@ -405,11 +422,21 @@ export default function ScrollVideoSite() {
                 CrudeFlow
               </div>
               <p className="text-2xl md:text-3xl font-bold max-w-md text-balance">
-                A finished, well-documented batch pipeline beats a half-built streaming one every time.
+                A finished, well-documented batch pipeline beats a half-built streaming one every
+                time.
               </p>
             </div>
             <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-              Portfolio · Trans Mountain Data Engineer
+              <div>Take a look at the code!</div>
+              <a
+                href="https://github.com/Not-Nimna/CrudeFlow"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-sm tracking-[0.22em] text-primary shadow-[0_0_0_1px_rgba(0,0,0,0.15)] transition-all hover:border-primary/70 hover:bg-primary/15 hover:translate-y-[-1px]"
+              >
+                <GitBranch size={14} />
+                GitHub repository
+              </a>
             </div>
           </div>
         </footer>
