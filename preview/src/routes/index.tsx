@@ -8,13 +8,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "A medallion lakehouse simulating the Trans Mountain corridor: bronze/silver/gold layers, dbt on Databricks + DuckDB, three reporting personas — operations, financial, regulatory.",
+          "A medallion lakehouse for a pipeline company: bronze/silver/gold layers, dbt on Databricks + DuckDB, three reporting personas — operations, financial, regulatory.",
       },
       { property: "og:title", content: "CrudeFlow — Pipeline data platform" },
       {
         property: "og:description",
-        content:
-          "Bronze. Silver. Gold. A regulatory-grade lakehouse for the Trans Mountain corridor.",
+        content: "Bronze. Silver. Gold. A regulatory-grade lakehouse for a pipeline company.",
       },
       { property: "og:type", content: "website" },
     ],
